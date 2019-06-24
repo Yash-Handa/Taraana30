@@ -4,7 +4,7 @@ THis uses the JSON object directly from wynk ;)
 the content is updated on monday
 """
 import requests
-from bs4 import BeautifulSoup as soup
+from requests.exceptions import HTTPError
 
 HEADERS = {
     'User-Agent':
@@ -31,6 +31,54 @@ PARAMS = {
     'count': '50',
     'offset': '0'
 }
-RESPONSE = requests.get(URL, headers=HEADERS, params=PARAMS)
-WYNK = RESPONSE.json()
-print(WYNK)
+
+
+def get_data(url, headers, params):
+    """
+    Request the wynk server for data and return a list of the top 20 songs
+    """
+    response = ''
+    try:
+        response = requests.get(url, headers=headers, params=params)
+
+        # If the response was successful, no Exception will be raised
+        response.raise_for_status()
+    except HTTPError as http_err:
+        print(f'HTTP error occurred: {http_err}')
+        return None
+    else:
+        return response.json()['items']
+
+
+def top_20(raw):
+    '''
+    takes unsanitised list of songs and return a sanitized version
+    '''
+    if not raw:
+        return None
+    final = []
+    for song in raw:
+        s_detail = {
+            'duration': song.get('duration'),
+            'title': song.get('title'),
+            'keywords': song.get('keywords'),
+            'largeImage': song.get('largeImage').replace('320x180', '320x320'),
+            'smallImage': song.get('smallImage'),
+            'album': song.get('album'),
+            'shortUrl': song.get('shortUrl'),
+            'singer': song.get('subtitle').split(' - ')[0]
+        }
+        final.append(s_detail)
+    return final
+
+
+def wynk():
+    """
+    The main function to be exported
+    which retruns the list of top 20 bollywood songs from Wynk
+    """
+    return top_20(get_data(URL, HEADERS, PARAMS))
+
+
+if __name__ == '__main__':
+    print(wynk())
