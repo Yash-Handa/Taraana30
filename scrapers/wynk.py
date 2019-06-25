@@ -66,8 +66,14 @@ def top_20(raw):
             'smallImage': song.get('smallImage'),
             'album': song.get('album'),
             'shortUrl': song.get('shortUrl'),
-            'singer': song.get('subtitle').split(' - ')[0]
+            'singer': song.get('subtitle').split(' - ')[0],
+            'contentLang': song.get('contentLang'),
+            'wynk_id': song.get('id'),
+            # id eg: srch_universalmusic_00602577975424-INUM71900025
+            'label': song.get('id')[5:].split('_')[0]
         }
+        if s_detail['label'] == 'hungama':
+            s_detail['label'] = 'tseries'
         final.append(s_detail)
     return final
 
