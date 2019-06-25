@@ -61,16 +61,18 @@ def top_20(raw):
         s_detail = {
             'duration': song.get('duration'),
             'title': song.get('title'),
-            'keywords': song.get('keywords'),
-            'largeImage': song.get('largeImage').replace('320x180', '320x320'),
-            'smallImage': song.get('smallImage'),
+            'keywords': set(song.get('keywords').split(',')),
+            'image_320': song.get('largeImage').replace('320x180', '320x320'),
+            'image_120': song.get('smallImage'),
             'album': song.get('album'),
             'shortUrl': song.get('shortUrl'),
-            'singer': song.get('subtitle').split(' - ')[0],
+            # set is created from a list with only one element
+            'singers': set([song.get('subtitle').split(' - ')[0]]),
             'contentLang': song.get('contentLang'),
             'wynk_id': song.get('id'),
             # id eg: srch_universalmusic_00602577975424-INUM71900025
-            'label': song.get('id')[5:].split('_')[0]
+            'label': song.get('id')[5:].split('_')[0],
+            'provider': 'wynk'
         }
         if s_detail['label'] == 'hungama':
             s_detail['label'] = 'tseries'
