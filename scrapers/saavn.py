@@ -3,6 +3,7 @@ A web scraper to scrap saavn Weekly Top 15 Songs
 It actually have 30 songs
 """
 import json
+import html as htm
 import requests
 from requests.exceptions import HTTPError
 from bs4 import BeautifulSoup as Soup
@@ -51,6 +52,7 @@ def top_30(html):
     '''
     if not html:
         return None
+    html = htm.unescape(html)
     final = []
     soup = Soup(html, 'lxml')
     collector = soup.find_all('div', class_='hide song-json')

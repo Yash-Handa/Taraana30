@@ -2,6 +2,7 @@
 A web scraper to scrap mirchi top 20 songs of the week
 the content is updated on saturday
 """
+import html as htm
 import requests
 from requests.exceptions import HTTPError
 from bs4 import BeautifulSoup as Soup
@@ -50,6 +51,7 @@ def top_20(html):
     '''
     if not html:
         return None
+    html = htm.unescape(html)
     final = []
     soup = Soup(html, 'lxml')
     collector = soup.find_all('div', class_='pannel02')

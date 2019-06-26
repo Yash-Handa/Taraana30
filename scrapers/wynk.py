@@ -64,7 +64,7 @@ def top_20(raw):
             'keywords': set(song.get('keywords').split(',')),
             'image_320': song.get('largeImage').replace('320x180', '320x320'),
             'image_120': song.get('smallImage'),
-            'album': song.get('album'),
+            'album': song.get('album').replace(' (From', ''),
             'shortUrl': song.get('shortUrl'),
             # set is created from a list with only one element
             'singers': set([song.get('subtitle').split(' - ')[0]]),
