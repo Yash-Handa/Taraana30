@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/62342447cef544a1977f9c3ed89473c1)](https://app.codacy.com/app/yashhanda7/Taraana30?utm_source=github.com&utm_medium=referral&utm_content=Yash-Handa/Taraana30&utm_campaign=Badge_Grade_Dashboard)
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/Yash-Handa/Taraana30.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Yash-Handa/Taraana30/alerts/)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/Yash-Handa/Taraana30.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Yash-Handa/Taraana30/context:python)
