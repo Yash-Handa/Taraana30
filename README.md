@@ -7,7 +7,11 @@
 
 # Taraana30
 
-A web scraper that calculates weekly Top 30 Bollywood Songs from various platforms:
+<div>
+  <img alt="Demo" title="Demo of the Script" src="/Readme Content/demo.gif">
+</div>
+
+Taraana30 is a web scraper that calculates weekly Top 30 Bollywood Songs from various platforms:
 
 - **Radio Mirchi** - [List](http://www.radiomirchi.com/more/mirchi-top-20/)
 - **Gaana** - [Play List](https://gaana.com/playlist/gaana-dj-bollywood-top-50-1)
@@ -95,6 +99,23 @@ Currently the tool is only present as a GitHub repository and could be used from
   To speed up the scraping process particularly the delay in various I/O requests for gathering the source code from various platforms **Multi-Threading** is used, 1 thread per scraper (i.e., thread pool of 5 threads)
 
  **Note**: The `data/22-06-2019` folder in the repository is just an example/sample folder with data just to see the output of the script. No `.csv` file should be saved with the scraper. If you want to disable this feature, then remove `*.csv` from `.gitignore` file
+
+ ### Using as a Package
+
+When using as a package import the `main` module and call the `taraana30()` function on it.
+
+```py
+from Taraana import main
+
+# This function will just write the .csv files and will not return anything
+main.taraana30()
+```
+
+the `taraana30()` takes 1 optional argument `all_files` which tells how many files to create
+- `all_files=True`: this is same as passing `--all` argument to the script from terminal
+- `all_files=False`: (*Default*) this is same as running the script without any argument
+
+**Note**: The `taraana30()` function makes the `./data/<date of previous week's saturday>/` folder relative to the script it is called from (it uses the `os.getcwd()` function to find the current working directory and makes the `./data/<date of previous week's saturday>/` directory in it)
 
 <p align="center"><br><br>
   <img alt="kitten" src="https://media.giphy.com/media/t7MWRoExDRF72/giphy.gif">
