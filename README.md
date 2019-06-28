@@ -9,7 +9,7 @@
 
 <div>
   <img alt="Demo" title="Demo of the Script" src="/Readme Content/demo.gif">
-</div>
+</div><br><br>
 
 Taraana30 is a web scraper that calculates weekly Top 30 Bollywood Songs from various platforms:
 
