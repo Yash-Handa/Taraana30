@@ -58,13 +58,13 @@ def top_50(html):
         song = json.loads(str(s_html.string))
         s_detail = {
             'duration': song.get('duration'),
-            'title': song.get('title'),
-            'album': song.get('albumtitle'),
+            'title': song.get('title').strip(),
+            'album': song.get('albumtitle').strip(),
             'image_200': song.get('atw'),
             'image_400': song.get('atw').replace('size_m_', 'size_l_'),
             'image_800': song.get('atw').replace('size_m_', 'size_xl_'),
             'shortUrl': 'https://gaana.com' + song.get('share_url'),
-            'contentLang': song.get('language').lower()[:2],
+            'contentLang': song.get('language').strip().lower()[:2],
             'release_date': song.get('release_date'),
             'gaana_id': song.get('id'),
             # 'singers': set(song.get('singers').split(', ')),
@@ -73,7 +73,8 @@ def top_50(html):
 
         s_detail['singers'] = set()
         for artist in song.get('artist').split(','):
-            s_detail['singers'].add(artist.split('###')[0].strip())
+            s_detail['singers'].add(
+                artist.split('###')[0].strip().replace('-', ' ').title())
 
         final.append(s_detail)
     return final

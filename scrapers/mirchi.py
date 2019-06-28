@@ -65,8 +65,9 @@ def top_20(html):
             video = 'https:' + video.replace('embed/', 'watch?v=')
         final.append({
             'video': video,
-            'title': str(s_html.contents[3].h2.get_text()),
-            'album': str(s_html.contents[3].h3.get_text().split('\n')[0]),
+            'title': str(s_html.contents[3].h2.get_text()).strip(),
+            'album':
+            str(s_html.contents[3].h3.get_text().split('\n')[0]).strip(),
             'info': str(s_html.contents[5].get_text().strip()),
             'provider': 'mirchi'
         })

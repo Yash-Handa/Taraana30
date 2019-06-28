@@ -63,16 +63,17 @@ def top_30(html):
         song = json.loads(str(s_html.string))
         s_detail = {
             'duration': song.get('duration'),
-            'title': song.get('title'),
-            'album': song.get('album'),
+            'title': song.get('title').strip(),
+            'album': song.get('album').strip(),
             'image_150': song.get('image_url'),
             'shortUrl': song.get('tiny_url'),
-            'label': song.get('label'),
-            'contentLang': song.get('language').lower()[:2],
+            'label': song.get('label').strip(),
+            'contentLang': song.get('language').strip().lower()[:2],
             'year': song.get('year'),
             'saavn_id': song.get('e_songid'),
-            'singers': set(song.get('singers').split(', ')),
-            'music': set(song.get('music').split(', ')),
+            'singers': {x.strip().replace('-', ' ').title()
+                        for x in song.get('singers').split(', ')},
+            'music': {x.strip() for x in song.get('music').split(', ')},
             'provider': 'saavn'
         }
         prep = s_detail['singers'] | s_detail['music']

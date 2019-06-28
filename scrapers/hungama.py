@@ -56,14 +56,15 @@ def top_40(raw):
 
     for song in raw:
         s_detail = {
-            'title': song.get('song_name').replace(' (From', ''),
+            'title': song.get('song_name').strip().replace(' (From', ''),
             'image_200': song.get('img_src'),
-            'album': song.get('album_name'),
+            'album': song.get('album_name').strip(),
             # set is created from a list with only one element
             'lyricist': set([song.get('lyricist').split(',')[0].strip()]),
             'hungama_id': song.get('mediaid'),
             'provider': 'hungama',
-            'singers': {x.strip() for x in song.get('singer_name').split(', ')}
+            'singers': {x.strip().replace('-', ' ').title()
+                        for x in song.get('singer_name').split(', ')}
         }
 
         link = 'https://www.hungama.com/song/'
