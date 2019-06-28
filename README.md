@@ -72,7 +72,9 @@ Example:
 Currently the tool is only present as a GitHub repository and could be used from there only
 
 1. Fork and Clone to your machine
+
 2. Run the pipenv: `pipenv shell`
+
 3. Run `pipenv install --ignore-pipfile` to install all dependencies to your machine. The main dependencies are:
    - beautifulsoup4
    - requests
