@@ -105,3 +105,4 @@ venv.bak/
 
 ##### Project Related files #####
 data
+*.csv
