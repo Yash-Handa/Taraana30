@@ -19,7 +19,7 @@ Taraana30 is a web scraper that calculates weekly Top 30 Bollywood Songs from va
 - **Hungama** - [Play List](https://www.hungama.com/playlists/bollywood-top-40/6532/)
 - **Wynk** - [Play List](https://wynk.in/music/playlist/weekly-top-20-bollywood/bb_1491818945339)
 
-The Web Scraper scrapes the above List/Play List for the data from various providersand save the data in the data folder : `./data/<date of previous week's saturday>/` more on `<date of previous week's saturday>` later
+The Web Scraper scrapes the above List/Play List for the data from various providers and save the data in the data folder : `./data/<date of previous week's saturday>/` more on `<date of previous week's saturday>` later
 
 ### Usage
 
